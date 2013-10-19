@@ -1,28 +1,22 @@
 class CLIRouter
 
-  attr_reader :weather_data
+  attr_reader :weather_forecast, :args
 
-  def initialize
+  def initialize(args)
     @weather_forecast = Forecast.new(WeatherData.new)
-    @arg = ARGV
+    @args = args # in fact this is ARGV
   end
 
   def help
-    today
+    weather_forecast.today
     puts "if you'd like a different forecast try something like 'forecast tomorrow'"
   end
 
-  def tomorrow
-    puts weather_forecast.tomorrow
-  end
-
-  def today
-    puts weather_forecast.today
-  end
-
   def commands
-    if arg.length == 1
-      puts weather_forecast.send(arg[0])
+    if args.length == 1
+      puts weather_forecast.send(self.args[0])
+    elsif args.length == 0
+      help
     end
   end
 

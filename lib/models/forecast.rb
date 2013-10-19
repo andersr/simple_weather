@@ -41,14 +41,16 @@ class Forecast
     diff = temp1-temp2
 
     case diff.abs
-    when (1..3)
+    when (1..2)
       temp1 = temp2
-    when (4..7)
+    when (3..7)
       mod = "slightly "
     when (7..12)
       mod = "somewhat "
     when (12..30)
       mod = "much "
+    else
+      mod = ''
     end
 
     if temp1 == temp2
