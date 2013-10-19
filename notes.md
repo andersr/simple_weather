@@ -16,7 +16,40 @@ allowing for invoking from the command line
 # scraper = Scraper.new('http://students.flatironschool.com')
 # scraper.get_links_to_student_pages
 
-# binding.pry
+#TODO
+# next:  create a bunch of dummy data I can use to create a good command line
+
+
+# class SimpleWeather 
+#   def initialize(woeid)
+#     @weather = Weather.lookup(woeid, :fahrenheit)
+#   end
+
+#   def title
+#     @weather.title
+#   end
+
+#   def condition
+#     @weather.title
+#   end
+  
+# end
+
+# my_weather = SimpleWeather.new(2459115)
+
+
+# print <<-EOT
+# #{response.title}
+# #{response.condition.temp} degrees
+# #{response.condition.text}
+# EOT
+
+
+# -> forecast for tomorrow
+# -> slightly colder than yesterday
+
+# -> forecast for seattle wa
+# -> much colder than here, and rainier
 
 ### ARCHIVE
   # def crawl_student_pages(student_page)

@@ -10,6 +10,8 @@ describe "command line interface for the weather app" do
     @cli.on?.should eq true
   end
 
-  it "can display the forecast for tomorrow relative to today's weather"
+  it "can accept a forecast command with no attributes"
+
+   it "can accept a forecast command with no attributes"
 
 end
