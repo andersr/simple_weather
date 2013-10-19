@@ -6,8 +6,11 @@ class WeatherData
   NYC_LON = -74.006605
 
   def initialize(lat = NYC_LAT, lon = NYC_LON)
+    print "checking the weather."
     @today_data = ForecastIO.forecast(lat, lon, time: Time.now.to_i)
+    print " . "
     @yesterday_data = ForecastIO.forecast(lat, lon, time: time_yesterday)
+    print ".\n "
 
   end
 

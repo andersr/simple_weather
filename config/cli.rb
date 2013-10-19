@@ -39,7 +39,7 @@ class CLI
 
   def tomorrow
     get_data = Forecast.new(WeatherData.new)
-    get_data.generate_forecast
+    puts get_data.generate_forecast
     exit
   end
 

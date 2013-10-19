@@ -16,7 +16,7 @@ class Forecast
     elsif self.today_temp < self.yesterday_temp
       "colder than yesterday"
     else
-      puts "warmer than yesterday"
+      "warmer than yesterday"
     end
   end
 
