@@ -10,7 +10,7 @@ class Scraper
   end
 
    def get_temp_now
-    @scraped_content.css('.wx-temperature .temperature-fahrenheit')
+    @scraped_content.css('span.temperature-fahrenheit')
   end
 
   def get_temp_tomorrow
