@@ -2,7 +2,7 @@ class CLI
 
   def initialize
     @on = true
-    self.call
+    #self.call
   end
 
   def on?
@@ -37,10 +37,14 @@ class CLI
     @on = false
   end
 
+  def help
+    puts "Please enter something like 'today' or 'tomorrow'."
+  end
+
   def tomorrow
     get_data = Forecast.new(WeatherData.new)
     puts get_data.generate_forecast
-    exit
+    # exit
   end
 
 end
