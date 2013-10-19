@@ -1,16 +1,8 @@
 class CLI
 
-  COMMANDS = {
-    :now => ["", "now", "today"],
-    :tonight => ["tonight"],
-    :tomorrow =>  ["tomorrow"],
-    :next_week => ["next week"]
-    :help => ["help"]
-  }
-
   def initialize
     @on = true
-    # puts "[initialized]"
+    self.call
   end
 
   def on?
@@ -23,21 +15,32 @@ class CLI
     end
   end
 
-  def command(input)
-    # look up in commands
-    case input
-      when "forecast for tomorrow"
-        "a little warmer than today"
-        exit
-      end
+  def command
+    input = command_request
+    self.send(input)
   end
 
   def command_request
-    self.command(gets.downcase.strip)
+    gets.downcase.strip
   end
-
+  
+  ### COMMANDS ### 
+  # COMMANDS = {
+  #   :now => ["", "now", "today"],
+  #   :tonight => ["tonight"],
+  #   :tomorrow =>  ["tomorrow"],
+  #   :next_week => ["next week"]
+  #   :help => ["help"]
+  # }
+  
   def exit
     @on = false
+  end
+
+  def tomorrow
+    get_data = Forecast.new(WeatherData.new)
+    get_data.generate_forecast
+    exit
   end
 
 end

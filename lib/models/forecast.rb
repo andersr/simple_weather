@@ -12,9 +12,9 @@ class Forecast
     # determine whether today temp is higher, lower or the same as yesterday
     # return a string based on that result
     if self.today_temp == self.yesterday_temp
-      puts "same as yesterday"
+      "same as yesterday"
     elsif self.today_temp < self.yesterday_temp
-      puts "colder than yesterday"
+      "colder than yesterday"
     else
       puts "warmer than yesterday"
     end
