@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'simple_forecast'
+# require 'simple_forecast'
 
 require_relative '../config/environment.rb'
 
