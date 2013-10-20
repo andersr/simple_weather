@@ -4,12 +4,11 @@
 
 require_relative '../config/environment.rb'
 
-cli = CLI.new
+cli = CLIRouter.new(ARGV)
 
-if ARGV.empty?
-  # this should return the same as 'forecast today'
-  ARGV[0] = "help"
-  cli.send(ARGV[0])
-else
-  cli.send(ARGV[0])
-end
+# if ARGV.empty?
+#   # this should return the same as 'forecast today'
+#   ARGV[0] = "help"
+# end
+
+cli.commands
