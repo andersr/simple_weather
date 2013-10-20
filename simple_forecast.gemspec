@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.version     = "0.0.1"
   s.date        = "2013-10-19"
   s.summary     = "A simple weather forecaster"
-  s.description = "A simple weather forecaster"
+  s.description = "A weather forecast relative to current conditions where you are.  Currently only works for New York, NY."
   s.authors     = ["Anders Ramsay", "Joe O'Conor"]
   s.email       = ["andersr@gmail.com", "joe.oconor@gmail.com"]
   s.files       = `git ls-files`.split("\n")

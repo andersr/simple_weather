@@ -62,7 +62,6 @@ class Forecast
     end
   end
 
-
 # categorization
 # "same"
 # "colder than"
@@ -72,8 +71,6 @@ class Forecast
 # "yesterday"
 # "today"
 # "tomorrow"
-
-
 
 end
 
