@@ -12,7 +12,7 @@ class Forecast
   end
 
   def today
-    print " .\n"
+    print "."
     @yesterday_temp = self.weather_data.yesterday_temp
     separator + 
     "temp: " + 
@@ -22,6 +22,7 @@ class Forecast
   end
 
   def tomorrow
+    "\n" +
     separator +
     "temp: " + 
     compare(tomorrow_temp, today_temp) + 
@@ -99,7 +100,12 @@ class Forecast
   end
 
   def separator
-    "------------------\n"
+    15.times do
+      print "."
+      sleep(0.015)
+    end
+    sleep(0.15)
+    ""
   end
   
   # def avg_temp_next_weekend

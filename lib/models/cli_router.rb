@@ -14,7 +14,6 @@ class CLIRouter
 
   def help
     puts weather_forecast.today
-    puts weather_forecast.separator
     puts "if you'd like a different forecast try something like 'forecast tomorrow'"
   end
 
