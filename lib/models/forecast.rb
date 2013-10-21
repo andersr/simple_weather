@@ -33,8 +33,8 @@ class Forecast
     separator +
     "temp: " + 
     compare(avg_temp_this_weekend, today_temp) + 
-    "today\n" + 
-    self.weather_data.weekend_summary
+    "today\n" 
+    # self.weather_data.weekend_summary
   end
 
   def next_week
