@@ -12,7 +12,7 @@ class Forecast
   end
 
   def today
-    puts "hmm, interesting!"
+    puts "gathering additional data"
     @yesterday_temp = self.weather_data.yesterday_temp
     separator + 
     "temp: #{compare(today_temp, yesterday_temp)}yesterday\n#{self.weather_data.today_summary}"
@@ -23,34 +23,46 @@ class Forecast
     "temp: #{compare(tomorrow_temp, today_temp)}today\n#{self.weather_data.tomorrow_summary}"
   end
 
-  def avg_temp_this_weekend
-    data = find_weekend_time # if it's 3, then take 1 and 2
-    weekend_avg = (data[1]["temperatureMax"] + data[2]["temperatureMax"])/2
-    puts weekend_avg
-    weekend_avg
-  end
-
-  def find_weekend_time
-    weekend_data = weather_data.today_data["daily"]["data"].select do |data_hash|
-      ruby_datetime = Time.at(data_hash["time"])
-      ruby_datetime.saturday? || ruby_datetime.sunday?
-    end
-
-  end
-
-
-  def avg_temp_next_weekend
-
-  end
-
   def this_weekend
-    puts today_temp
+    separator +
     compare(avg_temp_this_weekend, today_temp) + "today"
   end
 
   def next_week
-    # compare(this_week_avg, next_week_avg)
+    separator
+    # compare(this_week_avg, today)
   end
+  
+  def avg_temp_this_weekend
+    data = find_weekend_data
+    weekend_avg = (data[0]["temperatureMax"] + data[1]["temperatureMax"])/2
+  end
+
+  def find_weekend_data
+    weekend_data = weather_data.today_data["daily"]["data"][1..7].select do |data_hash|
+      ruby_datetime = Time.at(data_hash["time"])
+      ruby_datetime.saturday? || ruby_datetime.sunday?
+    end
+  end
+
+  def avg_temp_this_week
+
+  end
+
+  def avg_temp_next_week
+  end
+
+  def find_week_time
+    week_data = weather_data.today_data["daily"]["data"][1..7].reject do |data_hash|
+      ruby_datetime = Time.at(data_hash["time"])
+      ruby_datetime.saturday? || ruby_datetime.sunday?
+    end
+    pp week_data
+    week_data
+  end
+
+
+
 
   def compare(temp1, temp2)
     diff = (temp1.round-temp2.round).abs
@@ -81,6 +93,9 @@ class Forecast
     "------------------\n"
   end
   
+  # def avg_temp_next_weekend
+
+  # end
 # categorization
 # "same"
 # "colder than"
