@@ -12,20 +12,29 @@ class Forecast
   end
 
   def today
-    puts "gathering additional data"
+    print " .\n"
     @yesterday_temp = self.weather_data.yesterday_temp
     separator + 
-    "temp: #{compare(today_temp, yesterday_temp)}yesterday\n#{self.weather_data.today_summary}"
+    "temp: " + 
+    compare(today_temp, yesterday_temp) + 
+    "yesterday\n" + 
+    self.weather_data.today_summary
   end
 
   def tomorrow
     separator +
-    "temp: #{compare(tomorrow_temp, today_temp)}today\n#{self.weather_data.tomorrow_summary}"
+    "temp: " + 
+    compare(tomorrow_temp, today_temp) + 
+    "today\n" +
+    self.weather_data.tomorrow_summary
   end
 
   def this_weekend
     separator +
-    compare(avg_temp_this_weekend, today_temp) + "today"
+    "temp: " + 
+    compare(avg_temp_this_weekend, today_temp) + 
+    "today\n" + 
+    self.weather_data.weekend_summary
   end
 
   def next_week
