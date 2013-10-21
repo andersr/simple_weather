@@ -30,14 +30,5 @@ class CLIRouter
     end
   end
 
-  # def this_weekend
-  #   puts weather_data.this_weekend
-
-  # end
-
-  # def next_week
-  #   puts weather_data.next_week
-  # end
-
 end
 

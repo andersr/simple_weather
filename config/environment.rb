@@ -1,7 +1,9 @@
 require 'forecast_io'
-require 'pry'
 require 'geocoder'
-require 'open-uri'
+require 'chronic'
+# require 'open-uri'
+
+require 'pry'
 
 ForecastIO.api_key = '2b5cab93f5051c1207517df51d39ceee'
 
