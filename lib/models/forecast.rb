@@ -1,47 +1,74 @@
 class Forecast
 
-  attr_accessor :today_temp, :yesterday_temp, :tomorrow_temp, :weather_data
+  attr_accessor :today_temp, :yesterday_temp, :tomorrow_temp, :weather_data, :compare_loc
 
   def initialize(weather_data_object)
     @weather_data = weather_data_object
 
-    @today_temp = self.weather_data.temp_today
-    @tomorrow_temp = self.weather_data.temp_tomorrow
+    @today_temp = self.weather_data.today_temp
+    @tomorrow_temp = self.weather_data.tomorrow_temp
     # @this_weekend = self.avg_temp_this_weekend
     # @next_week = self.avg_temp_next_week
   end
 
   def today
-    puts "hmm, interesting!"
-    @yesterday_temp = self.weather_data.temp_yesterday
-    compare(today_temp, yesterday_temp) + "yesterday"
+    puts "gathering additional data"
+    @yesterday_temp = self.weather_data.yesterday_temp
+    separator + 
+    "temp: #{compare(today_temp, yesterday_temp)}yesterday\n#{self.weather_data.today_summary}"
   end
 
   def tomorrow
-    compare(tomorrow_temp, today_temp) + "today"
-  end
-
-  def avg_temp_this_weekend
-
-  end
-
-  def avg_temp_next_weekend
-
+    separator +
+    "temp: #{compare(tomorrow_temp, today_temp)}today\n#{self.weather_data.tomorrow_summary}"
   end
 
   def this_weekend
-    # compare(this_week_avg_temp?, temp_for_upcoming_weekend)
+    separator +
+    compare(avg_temp_this_weekend, today_temp) + "today"
   end
 
   def next_week
-    # compare(this_week_avg, next_week_avg)
+    separator
+    # compare(this_week_avg, today)
+  end
+  
+  def avg_temp_this_weekend
+    data = find_weekend_data
+    weekend_avg = (data[0]["temperatureMax"] + data[1]["temperatureMax"])/2
   end
 
-  def compare(temp1, temp2)
-    diff = temp1-temp2
+  def find_weekend_data
+    weekend_data = weather_data.today_data["daily"]["data"][1..7].select do |data_hash|
+      ruby_datetime = Time.at(data_hash["time"])
+      ruby_datetime.saturday? || ruby_datetime.sunday?
+    end
+  end
 
-    case diff.abs
-    when (1..2)
+  def avg_temp_this_week
+
+  end
+
+  def avg_temp_next_week
+  end
+
+  def find_week_time
+    week_data = weather_data.today_data["daily"]["data"][1..7].reject do |data_hash|
+      ruby_datetime = Time.at(data_hash["time"])
+      ruby_datetime.saturday? || ruby_datetime.sunday?
+    end
+    pp week_data
+    week_data
+  end
+
+
+
+
+  def compare(temp1, temp2)
+    diff = (temp1.round-temp2.round).abs
+
+    case diff
+    when (0..2)
       temp1 = temp2
     when (3..7)
       mod = "slightly "
@@ -62,6 +89,12 @@ class Forecast
     end
   end
 
+  def separator
+    "------------------\n"
+  end
+  
+  # def avg_temp_next_weekend
+  # end
 # categorization
 # "same"
 # "colder than"
