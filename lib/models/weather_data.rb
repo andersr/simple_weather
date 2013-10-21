@@ -35,7 +35,6 @@ class WeatherData
     self.today_data["daily"]["data"][1]["summary"].downcase.gsub(/\./,'')
   end
 
-
   def time_yesterday
     Time.now.to_i - 86400
   end

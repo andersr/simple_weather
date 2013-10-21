@@ -7,8 +7,6 @@ class Forecast
 
     @today_temp = self.weather_data.today_temp
     @tomorrow_temp = self.weather_data.tomorrow_temp
-    # @this_weekend = self.avg_temp_this_weekend
-    # @next_week = self.avg_temp_next_week
   end
 
   def today
@@ -23,15 +21,23 @@ class Forecast
     "temp: #{compare(tomorrow_temp, today_temp)}today\n#{self.weather_data.tomorrow_summary}"
   end
 
-  def this_weekend
+  def weekend
     separator +
     compare(avg_temp_this_weekend, today_temp) + "today"
   end
 
   def next_week
     separator
-    # compare(this_week_avg, today)
+    # TODO: compare(this_week_avg, today)
   end
+
+  # def this_weekend
+  #   puts weather_data.this_weekend
+  # end
+
+  # def next_week
+  #   puts weather_data.next_week
+  # end
   
   def avg_temp_this_weekend
     data = find_weekend_data
@@ -61,9 +67,6 @@ class Forecast
     week_data
   end
 
-
-
-
   def compare(temp1, temp2)
     diff = (temp1.round-temp2.round).abs
 
@@ -92,18 +95,6 @@ class Forecast
   def separator
     "------------------\n"
   end
-  
-  # def avg_temp_next_weekend
-  # end
-# categorization
-# "same"
-# "colder than"
-# "warmer than"
-
-# compared objects
-# "yesterday"
-# "today"
-# "tomorrow"
 
 end
 

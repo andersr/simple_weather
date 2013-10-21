@@ -1,14 +1,4 @@
 #!/usr/bin/env ruby
-
-# require 'simple_forecast'
-
 require_relative '../config/environment.rb'
-
 cli = CLIRouter.new(ARGV)
-
-# if ARGV.empty?
-#   # this should return the same as 'forecast today'
-#   ARGV[0] = "help"
-# end
-
 cli.commands
