@@ -19,6 +19,10 @@ class CLIRouter
   end
 
   def commands
+    if args.include?("-h")
+      return help
+    end
+
     if args.length == 1
       puts weather_forecast.send(self.args[0])
     elsif args.length == 2
