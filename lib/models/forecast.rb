@@ -107,7 +107,8 @@ class Forecast
       print "."
       sleep(0.015)
     end
-    sleep(0.15)
+    print "\n"
+    sleep(0.3)
     ""
   end
 
