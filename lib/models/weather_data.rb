@@ -9,7 +9,7 @@ class WeatherData
   def initialize(lat = NYC.first, long = NYC.last)
     @lat = lat
     @long = long
-    puts "checking my instruments"
+    #puts "checking my instruments"
     @today_data = ForecastIO.forecast(self.lat, self.long) 
     # when you don't specify a time in the ForecastIO call, you can get the daily high temps
   end

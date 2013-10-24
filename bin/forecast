@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 require_relative '../config/environment.rb'
 cli = CLIRouter.new(ARGV)
-cli.commands
+cli.parse_commands

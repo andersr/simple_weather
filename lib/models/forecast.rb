@@ -4,7 +4,6 @@ class Forecast
 
   def initialize(weather_data_object)
     @weather_data = weather_data_object
-
     @today_temp = self.weather_data.today_temp
     @tomorrow_temp = self.weather_data.tomorrow_temp
   end
