@@ -14,7 +14,14 @@ class CLIRouter
 
   def help
     puts weather_forecast.today
-    puts "if you'd like a different forecast try something like 'forecast tomorrow'"
+    puts "thanks for using simple forecast. currently, you can ask for the following simple forecasts:"
+    puts "      tomorrow"
+    puts "      today"
+    puts "      tonight"
+    puts "      this_weekend"
+    # if you'd like a different forecast try something like 'forecast tomorrow'"
+    #TODO: implement chronic
+    #Chronic.parse("tonight").to_i => Unix seconds of 10pm tonight
   end
 
   def commands
